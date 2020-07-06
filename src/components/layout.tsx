@@ -6,7 +6,9 @@ import styled from 'styled-components'
 import SEO from "./seo"
 import ProfileImage from '../../public/icons/icon-144x144.png'
 import { createGlobalStyle } from 'styled-components'
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faEnvelope, faRss} from '@fortawesome/free-solid-svg-icons'
+import {faLinkedin, faGithub} from '@fortawesome/free-brands-svg-icons'
 type DataProps = {
   site: {
     buildTime: string
@@ -22,9 +24,11 @@ const Layout: FunctionComponent  = (props) => (
             <VerticalNavTopItem>
               <VerticalNavImage src = {ProfileImage}/>
             </VerticalNavTopItem>
+            <Link style = {{boxShadow:`none`, textShadow:`none`, color:`${colors.dark}`}} to = "/">
             <VerticalNavItem> 
               Home
             </VerticalNavItem>
+            </Link>
             <VerticalNavItem>
               Portfolio
             </VerticalNavItem>
@@ -34,7 +38,24 @@ const Layout: FunctionComponent  = (props) => (
             <VerticalNavItem>
               About
             </VerticalNavItem>
+              <VerticalNavFooter>
+                <IconContainer>
+                  <FontAwesomeIcon icon = {faGithub} size = "lg" inverse/>
+                </IconContainer>
+                <IconContainer>
+                  <FontAwesomeIcon icon = {faLinkedin} size = "lg" inverse/>
+                </IconContainer>
+                <IconContainer>
+                  <FontAwesomeIcon icon = {faEnvelope} size = "lg" inverse/>
+                </IconContainer>
+                 <IconContainer>
+                  <FontAwesomeIcon icon = {faRss} size = "lg" inverse/>
+                </IconContainer>
+                
+              </VerticalNavFooter>
+
           </VerticalNavBar>
+          
           {/* mobile header nav bar */}
           <HorizontalNavBar>
             <HorizontalNavBarItem>
@@ -153,6 +174,20 @@ display:flex;
   opacity:1;
 }
 `
+const IconContainer = styled.div`
+margin:  10px;
+`
+
+const VerticalNavFooter = styled.div`
+margin-top: 4.7rem;
+height: 2.5rem;
+align-self:flex-end;
+background-color: ${colors.secondary};
+justify-content:center;
+display:flex;
+align-items:center;
+`
+
 export const WhoAmIItem = styled.div `
 min-height: 2rem;
 margin-bottom:1rem;

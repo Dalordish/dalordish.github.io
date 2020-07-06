@@ -1,17 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Richard's weblog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Richard`,
+      summary: `who lives in Melbourne, trying to do interesting things.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `A place where I put my things.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
       twitter: `kylemathews`,
     },
   },
   plugins: [`gatsby-plugin-styled-components`,
+            `gatsby-plugin-fontawesome-css`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

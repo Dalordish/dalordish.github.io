@@ -14,7 +14,7 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <WhoAmIItem> <NoTopMarginTitle>Hi! I'm Richard </NoTopMarginTitle> 
-      Your professional bio is, arguably, the most important piece of copy you’ll ever write about yourself. It’s the first introduction to who you are, what you do and what you’re interested in—whether a blurb on a social media platform, a personal website or company team page. 
+      I'm a tech head living in Melbourne. I'd call myself a developer first - mostly with the web, but I also dabble to varying degrees in Cybersecurity, Robotics, and just about anything else that catches my eye. When I'm not trying to do something weird with technology, you can probably find me reading, or playing the occasional indie game.
       </WhoAmIItem>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
