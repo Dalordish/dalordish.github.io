@@ -35,21 +35,31 @@ const Layout: FunctionComponent  = (props) => (
             <VerticalNavItem>
               Blog
             </VerticalNavItem>
-            <VerticalNavItem>
-              About
-            </VerticalNavItem>
+            <Link to = "/about-this-site">
+              <VerticalNavItem>
+                About
+              </VerticalNavItem>
+            </Link>
               <VerticalNavFooter>
                 <IconContainer>
-                  <FontAwesomeIcon icon = {faGithub} size = "lg" inverse/>
+                  <a href = "#">
+                    <FontAwesomeIcon icon = {faGithub} size = "lg" inverse/>
+                  </a>
                 </IconContainer>
                 <IconContainer>
-                  <FontAwesomeIcon icon = {faLinkedin} size = "lg" inverse/>
+                  <a href = "#">
+                    <FontAwesomeIcon icon = {faLinkedin} size = "lg" inverse/>
+                  </a>
                 </IconContainer>
                 <IconContainer>
-                  <FontAwesomeIcon icon = {faEnvelope} size = "lg" inverse/>
+                  <a href = "#">
+                    <FontAwesomeIcon icon = {faEnvelope} size = "lg" inverse/>
+                  </a>
                 </IconContainer>
                  <IconContainer>
-                  <FontAwesomeIcon icon = {faRss} size = "lg" inverse/>
+                    <Link to="/rss.xml">
+                      <FontAwesomeIcon icon = {faRss} size = "lg" inverse/>
+                    </Link>
                 </IconContainer>
                 
               </VerticalNavFooter>
