@@ -1,6 +1,6 @@
 // If you don't want to use TypeScript you can delete this file!
 import React, {FunctionComponent} from "react"
-import { PageProps, Link, graphql } from "gatsby"
+import { PageProps, Link, graphql , useStaticQuery} from "gatsby"
 //import {} from 'styled-components/cssprop'
 import styled from 'styled-components'
 import SEO from "./seo"
@@ -16,7 +16,23 @@ type DataProps = {
 }
 
 
-const Layout: FunctionComponent  = (props) => (
+const Layout: FunctionComponent  = (props) => {
+  const data = useStaticQuery(graphql`
+    query SocialQuery {
+      site {
+        siteMetadata {
+          social {
+            twitter
+            linkedin
+            github
+            email
+          }
+        }
+      }
+    }
+  `)
+  console.log(data);
+  return(
     <div>
         <PageContainer>
           {/* desktop side nav bar*/}
@@ -24,38 +40,38 @@ const Layout: FunctionComponent  = (props) => (
             <VerticalNavTopItem>
               <VerticalNavImage src = {ProfileImage}/>
             </VerticalNavTopItem>
-            <Link style = {{boxShadow:`none`, textShadow:`none`, color:`${colors.dark}`}} to = "/">
-            <VerticalNavItem> 
+            <VerticalNavItem to = "/"> 
               Home
             </VerticalNavItem>
-            </Link>
-            <VerticalNavItem>
-              Portfolio
+            <VerticalNavItem to = "#">
+             Projects 
             </VerticalNavItem>
+            {/*
             <VerticalNavItem>
               Blog
             </VerticalNavItem>
-            <Link to = "/about-this-site">
-              <VerticalNavItem>
-                About
-              </VerticalNavItem>
-            </Link>
+            */} 
+            <VerticalNavItem to = "/about-this-site">
+              About
+            </VerticalNavItem>
               <VerticalNavFooter>
                 <IconContainer>
-                  <a href = "#">
+                  <a href = {`https://github.com/${data.site.siteMetadata.social.github}`}>
                     <FontAwesomeIcon icon = {faGithub} size = "lg" inverse/>
                   </a>
                 </IconContainer>
                 <IconContainer>
-                  <a href = "#">
+                  <a href = {`https://linkedin.com/in/${data.site.siteMetadata.social.linkedin}`}>
                     <FontAwesomeIcon icon = {faLinkedin} size = "lg" inverse/>
                   </a>
                 </IconContainer>
+                {/*
                 <IconContainer>
-                  <a href = "#">
+                  <a href = "ma">
                     <FontAwesomeIcon icon = {faEnvelope} size = "lg" inverse/>
                   </a>
                 </IconContainer>
+                */}
                  <IconContainer>
                     <Link to="/rss.xml">
                       <FontAwesomeIcon icon = {faRss} size = "lg" inverse/>
@@ -68,18 +84,15 @@ const Layout: FunctionComponent  = (props) => (
           
           {/* mobile header nav bar */}
           <HorizontalNavBar>
-            <HorizontalNavBarItem>
+            <HorizontalNavBarItem to = "/">
               Home
             </HorizontalNavBarItem>
-
-            <HorizontalNavBarItem>
+            <HorizontalNavBarItem to = "/about-this-site">
               About
             </HorizontalNavBarItem>
-
-            <HorizontalNavBarItem>
-              Blog 
+            <HorizontalNavBarItem to = "#">
+              Projects 
             </HorizontalNavBarItem>
-
           </HorizontalNavBar>
           <ContentPaneContainer>
             {props.children}
@@ -88,7 +101,7 @@ const Layout: FunctionComponent  = (props) => (
         </PageContainer>
         
     </div>
-)
+  )}
 
 
 // ------------------ Styling constants -------------//
@@ -171,9 +184,10 @@ padding: 1rem;
 const VerticalNavImage = styled.img`
 border-radius: 50%;
 `
-const VerticalNavItem = styled.div`
+const VerticalNavItem = styled(Link)`
 height: 5rem;
 margin-top: 0.5rem;
+text-decoration: none;
 background-color: ${colors.secondary};
 opacity:0.9;
 justify-content: center;
@@ -189,7 +203,7 @@ margin:  10px;
 `
 
 const VerticalNavFooter = styled.div`
-margin-top: 4.7rem;
+margin-top: 11.7rem;
 height: 2.5rem;
 align-self:flex-end;
 background-color: ${colors.secondary};
@@ -216,9 +230,10 @@ display:flex;
 flex-direction:row;
 `
 
-const HorizontalNavBarItem = styled.div`
+const HorizontalNavBarItem = styled(Link)`
 background-color: ${colors.secondary};
 opacity:0.9;
+text-decoration: none;
 justify-content: center;
 align-items: center;
 display:flex;

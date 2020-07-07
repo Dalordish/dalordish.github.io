@@ -8,7 +8,10 @@ module.exports = {
     description: `A place where I put my things.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `#`,
+      github: `dalordish`,
+      linkedin: `richardhuang199`,
+      email: `placeholder@test.com`,
     },
   },
   plugins: [`gatsby-plugin-styled-components`,
