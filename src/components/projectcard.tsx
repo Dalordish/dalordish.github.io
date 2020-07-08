@@ -6,30 +6,38 @@ import {faLinkedin, faGithub} from '@fortawesome/free-brands-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 import {colors, IconContainer} from './layout'
-import ProfileImage from '../../public/icons/icon-144x144.png'
 
-const Card = () => {
+
+
+const Card = ({title, body, githubUrl = '', liveSiteUrl='' , image = ''}) => {
 
     return(
     <CardOuter>
         {/*<Image src = {ProfileImage}/>*/}
-        <CardImage/>
+        <CardImage src = {image}>
+            {/* image ? <Image src = {image}/> : '' */}
+        </CardImage>
         <CardBody>
-            <h3> Lorem Ipsum</h3>
+            <h3>{title}</h3>
             <span>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-
+                {body}
             </span>
         </CardBody>
         <CardFooter>
+            {liveSiteUrl ? 
             <CardFooterDivider>
-              <a href = "#"> View live site </a>
+              <a href = {liveSiteUrl}> View live site </a>
             </CardFooterDivider>
+            : ''
+             }
+             {githubUrl ? 
             <div>
-                <a href = "#">
+                <a href = {githubUrl}>
                     Source <IconContainer><FontAwesomeIcon icon = {faGithub} /> </IconContainer>
                 </a>
             </div>
+            : ''
+              }
         </CardFooter>
 
     </CardOuter>
@@ -40,9 +48,8 @@ export default Card;
 
 
 const CardOuter =  styled.div`
-height:25rem;
-min-width: 9rem;
-max-width: 13rem;
+height:27rem;
+width: 13rem;
 background-color: ${colors.primary};
 display:flex;
 flex-direction: column;
@@ -52,6 +59,7 @@ margin-bottom: 2rem;
 
 const CardBody = styled.div`
 padding:1rem;
+height: 15rem;
 `
 const CardImage = styled.div`
 height:10rem;
@@ -60,12 +68,11 @@ background-color: lightgray;
 `
 const CardFooter = styled.div`
 border-top: 1px solid black;
-height: 4rem;
+height: 2rem;
 justify-content:center;
 display:flex;
 align-items:center;
 background-color: lightgray;
-flex: 1;
 `
 
 const CardFooterDivider = styled.div`

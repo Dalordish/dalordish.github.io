@@ -4,10 +4,11 @@ import { PageProps, Link, graphql , useStaticQuery} from "gatsby"
 //import {} from 'styled-components/cssprop'
 import styled from 'styled-components'
 import SEO from "./seo"
-import ProfileImage from '../../public/icons/icon-144x144.png'
+import ProfileImage from '../../content/assets/profile-pic.jpg'
 import { createGlobalStyle } from 'styled-components'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEnvelope, faRss} from '@fortawesome/free-solid-svg-icons'
+//todo refactor this to use gatsby-image
 import {faLinkedin, faGithub} from '@fortawesome/free-brands-svg-icons'
   type DataProps = {
     site: {
@@ -174,15 +175,15 @@ background-color: ${colors.primary};
 `
 
 const VerticalNavTopItem = styled.div`
-min-height: 10rem;
 justify-content: center;
 align-items: center;
 display:flex;
-padding: 1rem;
+padding-top: 1rem;
 
 `
 const VerticalNavImage = styled.img`
 border-radius: 50%;
+height: 10rem;
 `
 const VerticalNavItem = styled(Link)`
 height: 5rem;
@@ -203,7 +204,7 @@ margin:  10px;
 `
 
 const VerticalNavFooter = styled.div`
-margin-top: 11.7rem;
+margin-top: 8.7rem;
 height: 2.5rem;
 align-self:flex-end;
 background-color: ${colors.secondary};
