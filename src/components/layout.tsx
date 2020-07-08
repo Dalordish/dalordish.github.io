@@ -9,36 +9,36 @@ import { createGlobalStyle } from 'styled-components'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEnvelope, faRss} from '@fortawesome/free-solid-svg-icons'
 import {faLinkedin, faGithub} from '@fortawesome/free-brands-svg-icons'
-type DataProps = {
-  site: {
-    buildTime: string
+  type DataProps = {
+    site: {
+      buildTime: string
+    }
   }
-}
 
 
-const Layout: FunctionComponent  = (props) => {
-  const data = useStaticQuery(graphql`
-    query SocialQuery {
-      site {
-        siteMetadata {
-          social {
-            twitter
-            linkedin
-            github
-            email
+  const Layout: FunctionComponent  = (props) => {
+    const data = useStaticQuery(graphql`
+      query SocialQuery {
+        site {
+          siteMetadata {
+            social {
+              twitter
+              linkedin
+              github
+              email
+            }
           }
         }
       }
-    }
-  `)
-  console.log(data);
-  return(
-    <div>
-        <PageContainer>
-          {/* desktop side nav bar*/}
-          <VerticalNavBar>
-            <VerticalNavTopItem>
-              <VerticalNavImage src = {ProfileImage}/>
+    `)
+    console.log(data);
+    return(
+      <div>
+          <PageContainer>
+            {/* desktop side nav bar*/}
+            <VerticalNavBar>
+              <VerticalNavTopItem>
+                <VerticalNavImage src = {ProfileImage}/>
             </VerticalNavTopItem>
             <VerticalNavItem to = "/"> 
               Home
@@ -198,7 +198,7 @@ display:flex;
   opacity:1;
 }
 `
-const IconContainer = styled.div`
+export const IconContainer = styled.span`
 margin:  10px;
 `
 
