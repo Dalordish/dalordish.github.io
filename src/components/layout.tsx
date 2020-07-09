@@ -44,7 +44,7 @@ import {faLinkedin, faGithub} from '@fortawesome/free-brands-svg-icons'
             <VerticalNavItem to = "/"> 
               Home
             </VerticalNavItem>
-            <VerticalNavItem to = "#">
+            <VerticalNavItem to = "/projects">
              Projects 
             </VerticalNavItem>
             {/*
@@ -91,7 +91,7 @@ import {faLinkedin, faGithub} from '@fortawesome/free-brands-svg-icons'
             <HorizontalNavBarItem to = "/about-this-site">
               About
             </HorizontalNavBarItem>
-            <HorizontalNavBarItem to = "#">
+            <HorizontalNavBarItem to = "/projects">
               Projects 
             </HorizontalNavBarItem>
           </HorizontalNavBar>
