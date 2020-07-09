@@ -14,6 +14,9 @@ import Card from "../components/projectcard"
 // b - use Gatsby-Image for progressive loading
 
 import RCJAImage from '../../content/assets/projects/rcjarego.png'
+import PopTrackerImage from '../../content/assets/projects/poptracker.png'
+import SoccerImage from '../../content/assets/projects/soccerscorer.png'
+import WeatherImage from '../../content/assets/projects/weatherapp.png'
 
 
 const BlogIndex = ({ data, location }) => {
@@ -28,7 +31,7 @@ const BlogIndex = ({ data, location }) => {
             body = "The Event Management system for the Robocup Junior Australia National body. Volunteer project done pro-bono." 
             githubUrl = "https://github.com/MelbourneHighSchoolRobotics/RCJA_Registration_System"
             liveSiteUrl = "https://enter.robocupjunior.org.au/"
-            image = {RCJAImage}
+            image = {data.regoImage.childImageSharp}
         />
 
         <Card 
@@ -45,16 +48,19 @@ const BlogIndex = ({ data, location }) => {
         body = "A simple, minimalist webapp built with JQuery and bootstrap using geoip and weather apis."
         githubUrl = "https://github.com/Dalordish/Simple-Weather-App"
         liveSiteUrl = "https://dalordish.github.io/Simple-Weather-App/"
+        image = {data.weatherImage.childImageSharp}
         />
         <Card
         title = "Roboscore"
         body = 'A Game scoring system for the high school robotics competition "Robocup Junior". Built using pure javascript and material design lite by google.'
         githubUrl = "https://github.com/Dalordish/roboscore"
         liveSiteUrl = "https://dalordish.github.io/roboscore/"
+        image = {data.soccerImage.childImageSharp}
         />
         <Card
         title = "PSArchives Population Tracker"
         body = "A population tracker for the popular massively multiplayer online FPS Planetside 2. "
+        image = {data.popImage.childImageSharp }
         />
     </CardContainer>
     </Layout>
@@ -70,4 +76,41 @@ flex-wrap: wrap;
 }
 
 `
+
+
+
+export const query = graphql`
+
+query {
+      popImage: file(absolutePath: { regex: "/poptracker.png/" }) {
+        childImageSharp {
+          fixed(width: 1300, height: 1000) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      regoImage: file(absolutePath: { regex: "/rcjarego.png/" }) {
+        childImageSharp {
+          fixed(width: 1300, height: 1000) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      soccerImage: file(absolutePath: { regex: "/soccerscorer.png/" }) {
+        childImageSharp {
+          fixed(width: 1300, height: 1000) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      weatherImage: file(absolutePath: { regex: "/weatherapp.png/" }) {
+        childImageSharp {
+          fixed(width: 1300, height: 1000) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+`
+
 export default BlogIndex

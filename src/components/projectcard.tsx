@@ -13,9 +13,9 @@ const Card = ({title, body, githubUrl = '', liveSiteUrl='' , image = ''}) => {
 
     return(
     <CardOuter>
-        {/*<Image src = {ProfileImage}/>*/}
-        <CardImage src = {image}>
-            {/* image ? <Image src = {image}/> : '' */}
+        <CardImage>
+            {image ? <Image style = {{width: "13rem", height: "10rem"}} fixed = {image.fixed}/> : '' }
+            {/*<ResizedImg src = {image}/>*/}
         </CardImage>
         <CardBody>
             <h3>{title}</h3>
@@ -65,6 +65,11 @@ const CardImage = styled.div`
 height:10rem;
 width: 100%; 
 background-color: lightgray;
+`
+const ResizedImg = styled.img`
+    width: 100%:
+    height:100%;
+    object-fit: contain;
 `
 const CardFooter = styled.div`
 border-top: 1px solid black;
