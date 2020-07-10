@@ -40,6 +40,14 @@ const BlogIndex = ({ data, location }) => {
         githubUrl = "https://github.com/Dalordish/slack-compile"/>
 
         <Card
+        title = "This site!"
+        body = "The site you're looking at right now was an attempt to ditch css frameworks, do my own UI/UX design with Figma, and use Gatsby/React/Typescript to modernise my site."
+        githubUrl = "https://github.com/Dalordish/dalordish.github.io/"
+        liveSiteUrl = "https://dalordish.github.io/"
+        image = {data.blogImage.childImageSharp}
+        />
+
+        <Card
          title = "ClubManager"
          body = "A complex attendance, inventory, management and allocation system for the High School Robotics club I mentor at."
          />
@@ -110,6 +118,13 @@ query {
           }
         }
       }
+      blogImage: file(absolutePath: { regex: "/blogphoto.png/" }) {
+        childImageSharp {
+          fixed(width: 1300, height: 1000) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      } 
     }
 `
 
